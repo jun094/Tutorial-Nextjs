@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
+import ItemList from '../src/Components/ItemList';
+import { Header, Divider } from 'semantic-ui-react';
 
 export default function Home() {
     const [list, setList] = useState([]);
@@ -10,7 +12,6 @@ export default function Home() {
     const getDatas = () => {
         Axios.get(API_URL).then((res) => {
             setList(res.data);
-            console.log(res.data);
         });
     };
     useEffect(() => {
@@ -22,7 +23,19 @@ export default function Home() {
             <Head>
                 <title>Home | next js 튜토리얼</title>
             </Head>
-            main home 페이지입니다.
+            <Header as="h3" style={{ paddingTop: 40 }}>
+                베스트 상품
+            </Header>
+            <Divider />
+
+            <ItemList list={list.slice(0, 9)} />
+
+            <Header as="h3" style={{ paddingTop: 40 }}>
+                모든 상품
+            </Header>
+            <Divider />
+
+            <ItemList list={list.slice(9)} />
         </>
     );
 }
