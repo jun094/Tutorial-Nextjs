@@ -24,7 +24,12 @@ export default function Home() {
     return (
         <>
             <Head>
+                {
+                    // home 페이지 : 유저 요청에 의해 바뀌지 않는 페이지
+                    // sever side rendering < 정적 웹 페이지
+                }
                 <title>Home | next js 튜토리얼</title>
+                <meta name="description" content="dev-jun의 Next js 튜토리얼 페이지입니다."></meta>
             </Head>
 
             <Header as="h3" style={{ paddingTop: 40 }}>
