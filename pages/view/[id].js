@@ -2,9 +2,11 @@ import { useRouter } from 'next/router';
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import Item from '../../src/Components/Item';
+import Loading from '../../src/Components/Loading';
 
 const View = () => {
     const [item, setItem] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     const router = useRouter();
     const { id } = router.query;
@@ -15,6 +17,7 @@ const View = () => {
     const getDatas = () => {
         Axios.get(API_URL).then((res) => {
             setItem(res.data);
+            setIsLoading(false);
         });
     };
 
@@ -22,7 +25,12 @@ const View = () => {
         if (id) getDatas();
     }, [id]);
 
-    return <Item item={item} />;
+    return (
+        <>
+            {isLoading && <Loading />}
+            {!isLoading && <Item item={item} />}
+        </>
+    );
 };
 
 export default View;
