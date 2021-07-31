@@ -6,6 +6,8 @@ import Loading from '../../src/Components/Loading';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
+// dynamic route 사용
+
 // view 상세 페이지 : 유저 요청에 따라 Id 값이 바뀌고 그에 따라 title, desciption이 바뀌는 페이지
 // sever side rendering > 정적 웹 페이지
 
@@ -42,11 +44,18 @@ const View = ({ item }) => {
 
     return (
         <>
-            <Head>
-                <title>{item.name}</title>
-                <meta name="description" content={item.desciption}></meta>
-            </Head>
-            {item && <Item item={item} />}
+            {item && (
+                <>
+                    <Head>
+                        {
+                            //pre-render로 미리 서버에서 받아온 정보를 토대로 동적인 meta 데이터 설정이 가능하다.
+                        }
+                        <title>{item.name}</title>
+                        <meta name="description" content={item.desciption}></meta>
+                    </Head>
+                    <Item item={item} />
+                </>
+            )}
         </>
     );
 };

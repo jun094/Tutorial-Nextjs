@@ -11,7 +11,7 @@ function Gnb() {
         activeItem = 'about';
     }
 
-    //semantic-ui gnv 제공 기능
+    //semantic-ui Menu 제공 기능
     //menu.item 의 name --> data.name
     const goLink = (e, data) => {
         if (data.name === 'home') {
