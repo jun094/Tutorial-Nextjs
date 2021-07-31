@@ -1,8 +1,8 @@
 import Axios from 'axios';
-import Item from '../../src/Components/Item';
+import Item from '../../src/components/Item';
 import Head from 'next/head';
 
-import Loading from '../../src/Components/Loading';
+import Loading from '../../src/components/Loading';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 

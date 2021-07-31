@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import 'semantic-ui-css/semantic.min.css';
-import Footer from '../src/Components/Footer';
-import Top from '../src/Components/Top';
+import Footer from '../src/components/Footer';
+import Top from '../src/components/Top';
 
 //공통 레이아웃을 사용하기 위해서는 _app.js를 사용
 /*
