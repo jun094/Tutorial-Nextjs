@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 // sever side rendering > 정적 웹 페이지
 
 // item을 pre-rendering하여 props로 받는다.
-const View = ({ item }) => {
+const View = ({ item, name }) => {
     //console.log(item);
 
     /*
@@ -53,6 +53,7 @@ const View = ({ item }) => {
                         <title>{item.name}</title>
                         <meta name="description" content={item.desciption}></meta>
                     </Head>
+                    {name}환경입니다.
                     <Item item={item} />
                 </>
             )}
@@ -71,7 +72,7 @@ export async function getServerSideProps(context) {
 
     return {
         // item이라는 props를 컴포넌트에서 사용이 가능하다 !!!!
-        props: { item: data },
+        props: { item: data, name: process.env.name },
     };
 }
 export default View;

@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Axios from 'axios';
 import { useEffect, useState } from 'react';
-import ItemList from '../src/Components/ItemList';
+import ItemList from '../src/components/ItemList';
 import { Header, Divider } from 'semantic-ui-react';
-import Loading from '../src/Components/Loading';
+import Loading from '../src/components/Loading';
 
 // home 페이지 : 유저 요청에 의해 바뀌지 않는 페이지
 // sever side rendering < 정적 웹 페이지
@@ -12,7 +12,7 @@ export default function Home() {
     const [list, setList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const API_URL = 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline';
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
     const getDatas = () => {
         Axios.get(API_URL).then((res) => {
